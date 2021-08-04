@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta name="theme-color" content="#317EFB"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
+    <link rel="manifest" href="/manifest.webmanifest"/>
+    <title>PWA Budget Tracker</title>
+</head>
+
+<body>
+<!--Nav bar on top as a header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <i class="fas fa-wallet fa-1x"></i>
+            BUDGET TRACKER
+        </a>
+    </div>
+</nav>
+
+<!-- Main Body-->
+<div class="container">
+    <div class="row mt-4 balance-bits">
+        <div class="col-sm-4">
+            <h1 class="display-4">$<span id="total">0</span></h1>
+            <p class="lead">My Current Balance</p>
+            <p>
+                <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#money-manager"
+                        aria-expanded="false" aria-controls="collapseExample">
+                    Manage my Budget
+                </button>
+            </p>
+        </div>
+        <div class="col-sm-8 collapse" id="money-manager">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <form>
+                                <label for="t-name">Transaction Name:</label>
+                                <input type="text" id="t-name" placeholder="Name"/>
+                                <br><br>
+
+                                <label for="t-amount">Transaction Amount:</label>
+                                <input type="number" min="0" id="t-amount" placeholder="Amount"/>
+
+                                <div class="transaction-buttons">
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            <button class="btn btn-info" type="button" id="add-btn">Add</button>
+                                        </div>
+                                        <div class="col">
+                                            <button class="btn btn-info" type="button" id="sub-btn">Subtract</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p role="alert" class="error"></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="transactions">
+                                <table class="table special-table">
+                                    <thead>
+                                    <th>Transaction</th>
+                                    <th>Amount</th>
+                                    </thead>
+                                    <tbody id="tbody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <canvas id="chart"></canvas>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/db.js"></script>
+<script src="/js/scripts.js?v=2"></script>
+<script>
+	if ('serviceWorker' in navigator) {
+		window.addEventListener('load', () =>
+			navigator.serviceWorker
+				.register('/js/service-worker.js')
+				.then(reg => console.log('service worker file loaded!', reg))
+		);
+	}
+</script>
+</body>
+
+</html>

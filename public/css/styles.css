@@ -1,0 +1,17 @@
+.transaction-buttons span {
+    font-size: 10px;
+}
+
+.balance-bits {
+    min-height: 250px;
+}
+
+.special-table tbody, .special-table thead {
+    display: block;
+}
+
+.special-table tbody {
+    max-height: 145px;
+    overflow-y: scroll;
+    height: 145px;
+}
