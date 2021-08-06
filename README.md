@@ -13,10 +13,9 @@ In the browser:
 
 
 
-## Usage
+## Installation
 * npm i
 * npm start
-* App running on local host
 
 
 ## URL
